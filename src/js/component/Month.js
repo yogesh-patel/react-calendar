@@ -53,7 +53,7 @@ class Month extends React.Component{
     constructor(props) {
         super();
         this.state = {
-            month: props.dateS
+            month: props.date
         };
     }
     componentWillReceiveProps(nextProps) {
