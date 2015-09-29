@@ -165,7 +165,9 @@
 	        currentQueue = queue;
 	        queue = [];
 	        while (++queueIndex < len) {
-	            currentQueue[queueIndex].run();
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
 	        }
 	        queueIndex = -1;
 	        len = queue.length;
@@ -217,7 +219,6 @@
 	    throw new Error('process.binding is not supported');
 	};
 	
-	// TODO(shtylman)
 	process.cwd = function () { return '/' };
 	process.chdir = function (dir) {
 	    throw new Error('process.chdir is not supported');
@@ -38532,7 +38533,7 @@
 	
 	        _get(Object.getPrototypeOf(Month.prototype), "constructor", this).call(this);
 	        this.state = {
-	            month: props.dateS
+	            month: props.date
 	        };
 	    }
 	
@@ -39188,7 +39189,7 @@
 	
 	var ThemeManager = __webpack_require__(359)();
 	var moment = __webpack_require__(215);
-	__webpack_require__(458)();
+	__webpack_require__(456)();
 	
 	var Datepicker = React.createClass({
 	    displayName: 'Datepicker',
@@ -39257,59 +39258,59 @@
 	  ClearFix: __webpack_require__(370),
 	  DatePicker: __webpack_require__(374),
 	  DatePickerDialog: __webpack_require__(376),
-	  Dialog: __webpack_require__(393),
-	  DropDownIcon: __webpack_require__(399),
-	  DropDownMenu: __webpack_require__(407),
+	  Dialog: __webpack_require__(391),
+	  DropDownIcon: __webpack_require__(397),
+	  DropDownMenu: __webpack_require__(405),
 	  EnhancedButton: __webpack_require__(332),
-	  FlatButton: __webpack_require__(394),
-	  FloatingActionButton: __webpack_require__(409),
+	  FlatButton: __webpack_require__(392),
+	  FloatingActionButton: __webpack_require__(407),
 	  FontIcon: __webpack_require__(342),
 	  IconButton: __webpack_require__(329),
-	  IconMenu: __webpack_require__(410),
-	  LeftNav: __webpack_require__(414),
-	  LinearProgress: __webpack_require__(415),
-	  List: __webpack_require__(413),
-	  ListDivider: __webpack_require__(416),
-	  ListItem: __webpack_require__(417),
-	  Menu: __webpack_require__(401),
-	  MenuItem: __webpack_require__(403),
-	  Mixins: __webpack_require__(420),
-	  Overlay: __webpack_require__(396),
+	  IconMenu: __webpack_require__(408),
+	  LeftNav: __webpack_require__(412),
+	  LinearProgress: __webpack_require__(413),
+	  List: __webpack_require__(411),
+	  ListDivider: __webpack_require__(414),
+	  ListItem: __webpack_require__(415),
+	  Menu: __webpack_require__(399),
+	  MenuItem: __webpack_require__(401),
+	  Mixins: __webpack_require__(418),
+	  Overlay: __webpack_require__(394),
 	  Paper: __webpack_require__(346),
-	  RadioButton: __webpack_require__(422),
-	  RadioButtonGroup: __webpack_require__(425),
-	  RaisedButton: __webpack_require__(426),
-	  RefreshIndicator: __webpack_require__(427),
-	  Ripples: __webpack_require__(428),
-	  SelectField: __webpack_require__(429),
-	  Slider: __webpack_require__(430),
+	  RadioButton: __webpack_require__(420),
+	  RadioButtonGroup: __webpack_require__(423),
+	  RaisedButton: __webpack_require__(424),
+	  RefreshIndicator: __webpack_require__(425),
+	  Ripples: __webpack_require__(426),
+	  SelectField: __webpack_require__(427),
+	  Slider: __webpack_require__(428),
 	  SvgIcon: __webpack_require__(345),
 	  Icons: {
 	    NavigationMenu: __webpack_require__(344),
 	    NavigationChevronLeft: __webpack_require__(386),
-	    NavigationChevronRight: __webpack_require__(388)
+	    NavigationChevronRight: __webpack_require__(387)
 	  },
 	  Styles: __webpack_require__(357),
-	  Snackbar: __webpack_require__(432),
-	  Tab: __webpack_require__(433),
-	  Tabs: __webpack_require__(434),
-	  Table: __webpack_require__(437),
-	  TableBody: __webpack_require__(438),
-	  TableFooter: __webpack_require__(440),
-	  TableHeader: __webpack_require__(441),
-	  TableHeaderColumn: __webpack_require__(442),
-	  TableRow: __webpack_require__(443),
-	  TableRowColumn: __webpack_require__(439),
-	  Theme: __webpack_require__(444),
-	  Toggle: __webpack_require__(404),
-	  TimePicker: __webpack_require__(445),
-	  TextField: __webpack_require__(397),
+	  Snackbar: __webpack_require__(430),
+	  Tab: __webpack_require__(431),
+	  Tabs: __webpack_require__(432),
+	  Table: __webpack_require__(435),
+	  TableBody: __webpack_require__(436),
+	  TableFooter: __webpack_require__(438),
+	  TableHeader: __webpack_require__(439),
+	  TableHeaderColumn: __webpack_require__(440),
+	  TableRow: __webpack_require__(441),
+	  TableRowColumn: __webpack_require__(437),
+	  Theme: __webpack_require__(442),
+	  Toggle: __webpack_require__(402),
+	  TimePicker: __webpack_require__(443),
+	  TextField: __webpack_require__(395),
 	  Toolbar: __webpack_require__(384),
 	  ToolbarGroup: __webpack_require__(385),
-	  ToolbarSeparator: __webpack_require__(455),
-	  ToolbarTitle: __webpack_require__(456),
+	  ToolbarSeparator: __webpack_require__(453),
+	  ToolbarTitle: __webpack_require__(454),
 	  Tooltip: __webpack_require__(343),
-	  Utils: __webpack_require__(457)
+	  Utils: __webpack_require__(455)
 	};
 
 /***/ },
@@ -44507,7 +44508,7 @@
 	var WindowListenable = __webpack_require__(369);
 	var DateTime = __webpack_require__(375);
 	var DatePickerDialog = __webpack_require__(376);
-	var TextField = __webpack_require__(397);
+	var TextField = __webpack_require__(395);
 	
 	var DatePicker = React.createClass({
 	  displayName: 'DatePicker',
@@ -44794,19 +44795,19 @@
 	    var dow = d.getDay();
 	    switch (dow) {
 	      case 0:
-	        return 'Sunday';
+	        return 'Sun';
 	      case 1:
-	        return 'Monday';
+	        return 'Mon';
 	      case 2:
-	        return 'Tuesday';
+	        return 'Tue';
 	      case 3:
-	        return 'Wednesday';
+	        return 'Wed';
 	      case 4:
-	        return 'Thursday';
+	        return 'Thu';
 	      case 5:
-	        return 'Friday';
+	        return 'Fri';
 	      case 6:
-	        return 'Saturday';
+	        return 'Sat';
 	    }
 	  },
 	
@@ -44902,8 +44903,8 @@
 	var CssEvent = __webpack_require__(377);
 	var KeyCode = __webpack_require__(335);
 	var Calendar = __webpack_require__(378);
-	var Dialog = __webpack_require__(393);
-	var FlatButton = __webpack_require__(394);
+	var Dialog = __webpack_require__(391);
+	var FlatButton = __webpack_require__(392);
 	
 	var DatePickerDialog = React.createClass({
 	  displayName: 'DatePickerDialog',
@@ -44915,15 +44916,15 @@
 	  },
 	
 	  propTypes: {
+	    disableYearSelection: React.PropTypes.bool,
 	    initialDate: React.PropTypes.object,
-	    onAccept: React.PropTypes.func,
-	    onShow: React.PropTypes.func,
-	    onDismiss: React.PropTypes.func,
-	    onClickAway: React.PropTypes.func,
-	    minDate: React.PropTypes.object,
 	    maxDate: React.PropTypes.object,
+	    minDate: React.PropTypes.object,
+	    onAccept: React.PropTypes.func,
+	    onClickAway: React.PropTypes.func,
+	    onDismiss: React.PropTypes.func,
+	    onShow: React.PropTypes.func,
 	    shouldDisableDate: React.PropTypes.func,
-	    hideToolbarYearChange: React.PropTypes.bool,
 	    showYearSelector: React.PropTypes.bool
 	  },
 	
@@ -44948,12 +44949,12 @@
 	
 	    var styles = {
 	      root: {
-	        fontSize: 14,
-	        color: this.context.muiTheme.component.datePicker.calendarTextColor
+	        color: this.context.muiTheme.component.datePicker.calendarTextColor,
+	        fontSize: 14
 	      },
 	
 	      dialogContent: {
-	        width: this.props.mode === 'landscape' ? 560 : 280
+	        width: this.props.mode === 'landscape' ? 480 : 320
 	      },
 	
 	      dialogBodyContent: {
@@ -45003,7 +45004,6 @@
 	        maxDate: this.props.maxDate,
 	        shouldDisableDate: this.props.shouldDisableDate,
 	        shouldShowMonthDayPickerFirst: this.state.showMonthDayPicker,
-	        hideToolbarYearChange: this.props.hideToolbarYearChange,
 	        showYearSelector: this.props.showYearSelector,
 	        mode: this.props.mode })
 	    );
@@ -45155,8 +45155,8 @@
 	var CalendarMonth = __webpack_require__(379);
 	var CalendarYear = __webpack_require__(381);
 	var CalendarToolbar = __webpack_require__(383);
-	var DateDisplay = __webpack_require__(392);
-	var SlideInTransitionGroup = __webpack_require__(390);
+	var DateDisplay = __webpack_require__(390);
+	var SlideInTransitionGroup = __webpack_require__(388);
 	var ClearFix = __webpack_require__(370);
 	
 	var Calendar = React.createClass({
@@ -45165,16 +45165,14 @@
 	  mixins: [StylePropable, WindowListenable],
 	
 	  propTypes: {
+	    disableYearSelection: React.PropTypes.bool,
 	    initialDate: React.PropTypes.object,
 	    isActive: React.PropTypes.bool,
 	    minDate: React.PropTypes.object,
 	    maxDate: React.PropTypes.object,
+	    onDayTouchTap: React.PropTypes.func,
 	    shouldDisableDate: React.PropTypes.func,
-	    hideToolbarYearChange: React.PropTypes.bool,
-	    shouldShowMonthDayPickerFirst: React.PropTypes.bool,
-	    shouldShowYearPickerFirst: React.PropTypes.bool,
-	    showYearSelector: React.PropTypes.bool,
-	    onDayTouchTap: React.PropTypes.func
+	    shouldShowMonthDayPickerFirst: React.PropTypes.bool
 	  },
 	
 	  windowListeners: {
@@ -45183,22 +45181,20 @@
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
+	      disableYearSelection: false,
 	      initialDate: new Date(),
 	      minDate: DateTime.addYears(new Date(), -100),
 	      maxDate: DateTime.addYears(new Date(), 100),
-	      hideToolbarYearChange: false,
-	      shouldShowMonthDayPickerFirst: true,
-	      shouldShowYearPickerFirst: false,
-	      showYearSelector: false
+	      shouldShowMonthDayPickerFirst: true
 	    };
 	  },
 	
 	  getInitialState: function getInitialState() {
 	    return {
 	      displayDate: DateTime.getFirstDayOfMonth(this.props.initialDate),
+	      displayMonthDay: this.props.shouldShowMonthDayPickerFirst || true,
 	      selectedDate: this.props.initialDate,
 	      transitionDirection: 'left',
-	      displayMonthDay: this.props.shouldShowMonthDayPickerFirst || this.props.shouldShowYearPickerFirst || true,
 	      transitionEnter: true
 	    };
 	  },
@@ -45221,16 +45217,14 @@
 	    var yearCount = DateTime.yearDiff(this.props.maxDate, this.props.minDate) + 1;
 	    var weekCount = DateTime.getWeekArray(this.state.displayDate).length;
 	    var toolbarInteractions = this._getToolbarInteractions();
-	    var hideYearChangeButtons = this.props.hideToolbarYearChange || !this.props.showYearSelector;
-	    var isMultiYearRange = yearCount > 2; // Want a year range greater than 1. Ex. [2014,2016] has a count of 3
 	    var isLandscape = this.props.mode === 'landscape';
 	    var styles = {
 	      root: {
 	        fontSize: 12
 	      },
 	      calendarContainer: {
-	        width: isLandscape ? 280 : '100%',
-	        height: weekCount === 5 ? 268 : weekCount === 6 ? 308 : 228,
+	        width: isLandscape ? 320 : '100%',
+	        height: weekCount === 5 ? 284 : weekCount === 6 ? 324 : 244,
 	        float: isLandscape ? 'right' : 'none',
 	        transition: Transitions.easeOut('150ms', 'height'),
 	        overflow: 'hidden'
@@ -45238,12 +45232,12 @@
 	      yearContainer: {
 	        width: 280,
 	        overflow: 'hidden',
-	        height: yearCount < 6 ? yearCount * 56 + 10 : weekCount === 5 ? 268 : weekCount === 6 ? 308 : 228,
+	        height: yearCount < 6 ? yearCount * 56 + 10 : weekCount === 5 ? 284 : weekCount === 6 ? 324 : 244,
 	        float: isLandscape ? 'right' : 'none'
 	      },
 	      dateDisplay: {
-	        width: isLandscape ? 280 : '100%',
-	        height: '100%',
+	        width: isLandscape ? 120 : '',
+	        height: isLandscape ? weekCount === 5 ? 238 : weekCount === 6 ? 278 : 198 : '100%',
 	        float: isLandscape ? 'left' : 'none'
 	      },
 	      weekTitle: {
@@ -45257,13 +45251,13 @@
 	      weekTitleDay: {
 	        listStyle: 'none',
 	        float: 'left',
-	        width: 32,
+	        width: 37,
 	        textAlign: 'center',
 	        margin: '0 2px'
 	      }
 	    };
 	
-	    if (this.state.displayMonthDay || !this.props.showYearSelector) {
+	    if (this.state.displayMonthDay) {
 	      styles.yearContainer.display = 'none';
 	    } else {
 	      styles.calendarContainer.display = 'none';
@@ -45273,11 +45267,11 @@
 	      ClearFix,
 	      { style: this.mergeAndPrefix(styles.root) },
 	      React.createElement(DateDisplay, {
+	        disableYearSelection: this.props.disableYearSelection,
 	        style: styles.dateDisplay,
 	        selectedDate: this.state.selectedDate,
 	        handleMonthDayClick: this._handleMonthDayClick,
 	        handleYearClick: this._handleYearClick,
-	        yearSelectionAvailable: this.props.showYearSelector && isMultiYearRange,
 	        monthDaySelected: this.state.displayMonthDay,
 	        mode: this.props.mode,
 	        weekCount: weekCount }),
@@ -45287,12 +45281,8 @@
 	        React.createElement(CalendarToolbar, {
 	          displayDate: this.state.displayDate,
 	          onMonthChange: this._handleMonthChange,
-	          onYearChange: this._handleYearChange,
 	          prevMonth: toolbarInteractions.prevMonth,
-	          nextMonth: toolbarInteractions.nextMonth,
-	          prevYear: toolbarInteractions.prevYear,
-	          nextYear: toolbarInteractions.nextYear,
-	          hideYearChangeButtons: hideYearChangeButtons }),
+	          nextMonth: toolbarInteractions.nextMonth }),
 	        React.createElement(
 	          ClearFix,
 	          {
@@ -45358,15 +45348,15 @@
 	  },
 	
 	  _yearSelector: function _yearSelector() {
-	    if (this.props.showYearSelector) {
-	      return React.createElement(CalendarYear, {
-	        key: 'years',
-	        displayDate: this.state.displayDate,
-	        onYearTouchTap: this._handleYearTouchTap,
-	        selectedDate: this.state.selectedDate,
-	        minDate: this.props.minDate,
-	        maxDate: this.props.maxDate });
-	    }
+	    if (this.props.disableYearSelection) return;
+	
+	    return React.createElement(CalendarYear, {
+	      key: 'years',
+	      displayDate: this.state.displayDate,
+	      onYearTouchTap: this._handleYearTouchTap,
+	      selectedDate: this.state.selectedDate,
+	      minDate: this.props.minDate,
+	      maxDate: this.props.maxDate });
 	  },
 	
 	  getSelectedDate: function getSelectedDate() {
@@ -45426,11 +45416,7 @@
 	  },
 	
 	  _handleMonthChange: function _handleMonthChange(months) {
-	    this._addSelectedMonths(months);
-	  },
-	
-	  _handleYearChange: function _handleYearChange(years) {
-	    this._addSelectedYears(years);
+	    this.setState({ displayDate: DateTime.addMonths(this.state.displayDate, months) });
 	  },
 	
 	  _handleYearTouchTap: function _handleYearTouchTap(e, year) {
@@ -45442,9 +45428,7 @@
 	  _getToolbarInteractions: function _getToolbarInteractions() {
 	    return {
 	      prevMonth: DateTime.monthDiff(this.state.selectedDate, this.props.minDate) > 0,
-	      nextMonth: DateTime.monthDiff(this.state.selectedDate, this.props.maxDate) < 0,
-	      prevYear: DateTime.yearDiff(this.state.selectedDate, this.props.minDate) > 0,
-	      nextYear: DateTime.yearDiff(this.state.selectedDate, this.props.maxDate) < 0
+	      nextMonth: DateTime.monthDiff(this.state.selectedDate, this.props.maxDate) < 0
 	    };
 	  },
 	
@@ -45523,19 +45507,19 @@
 	
 	  propTypes: {
 	    displayDate: React.PropTypes.object.isRequired,
-	    onDayTouchTap: React.PropTypes.func,
 	    selectedDate: React.PropTypes.object.isRequired,
-	    minDate: React.PropTypes.object,
+	    autoOk: React.PropTypes.bool,
 	    maxDate: React.PropTypes.object,
-	    shouldDisableDate: React.PropTypes.func,
-	    autoOk: React.PropTypes.bool
+	    minDate: React.PropTypes.object,
+	    onDayTouchTap: React.PropTypes.func,
+	    shouldDisableDate: React.PropTypes.func
 	  },
 	
 	  render: function render() {
 	    var styles = {
 	      lineHeight: '32px',
 	      textAlign: 'center',
-	      padding: '8px 14px 0 14px'
+	      padding: '16px 14px 0 14px'
 	    };
 	
 	    return React.createElement(
@@ -45667,7 +45651,7 @@
 	        WebkitTapHighlightColor: 'rgba(0,0,0,0)',
 	        position: 'relative',
 	        float: 'left',
-	        width: 36,
+	        width: 41,
 	        padding: '4px 2px'
 	      },
 	
@@ -45678,8 +45662,9 @@
 	
 	      buttonState: {
 	        position: 'absolute',
-	        height: 32,
-	        width: 32,
+	        height: 36,
+	        width: 36,
+	        top: 2,
 	        opacity: 0,
 	        borderRadius: '50%',
 	        transform: 'scale(0)',
@@ -45996,32 +45981,23 @@
 	var Toolbar = __webpack_require__(384);
 	var ToolbarGroup = __webpack_require__(385);
 	var NavigationChevronLeft = __webpack_require__(386);
-	var NavigationChevronLeftDouble = __webpack_require__(387);
-	var NavigationChevronRight = __webpack_require__(388);
-	var NavigationChevronRightDouble = __webpack_require__(389);
-	var SlideInTransitionGroup = __webpack_require__(390);
+	var NavigationChevronRight = __webpack_require__(387);
+	var SlideInTransitionGroup = __webpack_require__(388);
 	
 	var CalendarToolbar = React.createClass({
 	  displayName: 'CalendarToolbar',
 	
 	  propTypes: {
 	    displayDate: React.PropTypes.object.isRequired,
-	    onMonthChange: React.PropTypes.func,
-	    onYearChange: React.PropTypes.func,
-	    prevYear: React.PropTypes.bool,
-	    nextYear: React.PropTypes.bool,
-	    prevMonth: React.PropTypes.bool,
 	    nextMonth: React.PropTypes.bool,
-	    hideYearChangeButtons: React.PropTypes.bool
+	    onMonthChange: React.PropTypes.func,
+	    prevMonth: React.PropTypes.bool
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      prevYear: true,
-	      nextYear: true,
-	      prevMonth: true,
 	      nextMonth: true,
-	      hideYearChangeButtons: false
+	      prevMonth: true
 	    };
 	  },
 	
@@ -46066,8 +46042,6 @@
 	  render: function render() {
 	    var month = DateTime.getFullMonth(this.props.displayDate);
 	    var year = this.props.displayDate.getFullYear();
-	    var prevYearChangeButton = this._getPrevYearChangeButton();
-	    var nextYearChangeButton = this._getNextYearChangeButton();
 	    var styles = this._styles();
 	
 	    return React.createElement(
@@ -46089,7 +46063,6 @@
 	      React.createElement(
 	        ToolbarGroup,
 	        { key: 0, float: 'left' },
-	        prevYearChangeButton,
 	        React.createElement(
 	          IconButton,
 	          {
@@ -46109,48 +46082,9 @@
 	            disabled: !this.props.nextMonth,
 	            onTouchTap: this._nextMonthTouchTap },
 	          React.createElement(NavigationChevronRight, null)
-	        ),
-	        nextYearChangeButton
+	        )
 	      )
 	    );
-	  },
-	
-	  _getPrevYearChangeButton: function _getPrevYearChangeButton() {
-	    var style = {
-	      display: this.props.hideYearChangeButtons ? 'none' : ''
-	    };
-	
-	    return React.createElement(
-	      IconButton,
-	      {
-	        style: style,
-	        disabled: !this.props.prevYear,
-	        onTouchTap: this._prevYearTouchTap },
-	      React.createElement(NavigationChevronLeftDouble, null)
-	    );
-	  },
-	
-	  _getNextYearChangeButton: function _getNextYearChangeButton() {
-	    var style = {
-	      display: this.props.hideYearChangeButtons ? 'none' : ''
-	    };
-	
-	    return React.createElement(
-	      IconButton,
-	      {
-	        style: style,
-	        disabled: !this.props.nextYear,
-	        onTouchTap: this._nextYearTouchTap },
-	      React.createElement(NavigationChevronRightDouble, null)
-	    );
-	  },
-	
-	  _prevYearTouchTap: function _prevYearTouchTap() {
-	    if (this.props.onYearChange && this.props.prevYear) this.props.onYearChange(-1);
-	  },
-	
-	  _nextYearTouchTap: function _nextYearTouchTap() {
-	    if (this.props.onYearChange && this.props.nextYear) this.props.onYearChange(1);
 	  },
 	
 	  _prevMonthTouchTap: function _prevMonthTouchTap() {
@@ -46411,31 +46345,6 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(177);
-	var SvgIcon = __webpack_require__(345);
-	
-	var NavigationChevronLeftDouble = React.createClass({
-	  displayName: 'NavigationChevronLeftDouble',
-	
-	  render: function render() {
-	    return React.createElement(
-	      SvgIcon,
-	      this.props,
-	      React.createElement('path', { d: 'M11.41 7.41 L10 6 l-6 6 6 6 1.41-1.41 L6.83 12z' }),
-	      React.createElement('path', { d: 'M18.41 7.41 L17 6 l-6 6 6 6 1.41-1.41 L13.83 12z' })
-	    );
-	  }
-	
-	});
-	
-	module.exports = NavigationChevronLeftDouble;
-
-/***/ },
-/* 388 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	var React = __webpack_require__(1);
 	var PureRenderMixin = React.addons.PureRenderMixin;
 	var SvgIcon = __webpack_require__(345);
@@ -46458,32 +46367,7 @@
 	module.exports = NavigationChevronRight;
 
 /***/ },
-/* 389 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(177);
-	var SvgIcon = __webpack_require__(345);
-	
-	var NavigationChevronRightDouble = React.createClass({
-	  displayName: 'NavigationChevronRightDouble',
-	
-	  render: function render() {
-	    return React.createElement(
-	      SvgIcon,
-	      this.props,
-	      React.createElement('path', { d: 'M6 6 L4.59  7.41 9.17 12 l-4.58 4.59 L6 18 l6 -6z' }),
-	      React.createElement('path', { d: 'M13 6 L11.59 7.41 16.17 12 l-4.58 4.59 L13 18 l6 -6z' })
-	    );
-	  }
-	
-	});
-	
-	module.exports = NavigationChevronRightDouble;
-
-/***/ },
-/* 390 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46495,7 +46379,7 @@
 	var React = __webpack_require__(1);
 	var ReactTransitionGroup = React.addons.TransitionGroup;
 	var StylePropable = __webpack_require__(322);
-	var SlideInChild = __webpack_require__(391);
+	var SlideInChild = __webpack_require__(389);
 	
 	var SlideIn = React.createClass({
 	  displayName: 'SlideIn',
@@ -46564,7 +46448,7 @@
 	module.exports = SlideIn;
 
 /***/ },
-/* 391 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46663,7 +46547,7 @@
 	module.exports = SlideInChild;
 
 /***/ },
-/* 392 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46676,8 +46560,7 @@
 	var StylePropable = __webpack_require__(322);
 	var DateTime = __webpack_require__(375);
 	var Transitions = __webpack_require__(330);
-	var AutoPrefix = __webpack_require__(325);
-	var SlideInTransitionGroup = __webpack_require__(390);
+	var SlideInTransitionGroup = __webpack_require__(388);
 	
 	var DateDisplay = React.createClass({
 	  displayName: 'DateDisplay',
@@ -46689,24 +46572,24 @@
 	  },
 	
 	  propTypes: {
+	    disableYearSelection: React.PropTypes.bool,
+	    monthDaySelected: React.PropTypes.bool,
 	    selectedDate: React.PropTypes.object.isRequired,
-	    weekCount: React.PropTypes.number,
-	    yearSelectionAvailable: React.PropTypes.bool,
-	    monthDaySelected: React.PropTypes.bool
+	    weekCount: React.PropTypes.number
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      weekCount: 4,
-	      yearSelectionAvailable: true,
-	      monthDaySelected: true
+	      disableYearSelection: false,
+	      monthDaySelected: true,
+	      weekCount: 4
 	    };
 	  },
 	
 	  getInitialState: function getInitialState() {
 	    return {
-	      transitionDirection: 'up',
-	      selectedYear: !this.props.monthDaySelected
+	      selectedYear: !this.props.monthDaySelected,
+	      transitionDirection: 'up'
 	    };
 	  },
 	
@@ -46729,6 +46612,64 @@
 	    return this.context.muiTheme.component.datePicker;
 	  },
 	
+	  getStyles: function getStyles() {
+	    var theme = this.getTheme();
+	    var isLandscape = this.props.mode === 'landscape';
+	
+	    var styles = {
+	      root: {
+	        backgroundColor: theme.selectColor,
+	        borderTopLeftRadius: 2,
+	        borderTopRightRadius: 2,
+	        color: theme.textColor,
+	        height: 60,
+	        padding: 20
+	      },
+	
+	      month: {
+	        display: isLandscape ? 'block' : undefined,
+	        marginLeft: isLandscape ? undefined : 8,
+	        marginTop: isLandscape ? 5 : undefined
+	      },
+	
+	      monthDay: {
+	        root: {
+	          display: 'inline-block',
+	          fontSize: 36,
+	          fontWeight: '400',
+	          lineHeight: '36px',
+	          height: isLandscape ? 76 : 38,
+	          opacity: this.state.selectedYear ? 0.7 : 1.0,
+	          transition: Transitions.easeOut(),
+	          width: '100%'
+	        },
+	
+	        title: {
+	          cursor: !this.state.selectedYear ? 'default' : 'pointer'
+	        }
+	      },
+	
+	      year: {
+	        root: {
+	          margin: 0,
+	          fontSize: 16,
+	          fontWeight: '400',
+	          lineHeight: '16px',
+	          height: 16,
+	          opacity: this.state.selectedYear ? 1.0 : 0.7,
+	          transition: Transitions.easeOut(),
+	          marginBottom: 10
+	        },
+	
+	        title: {
+	          cursor: this.state.selectedYear && !this.props.disableYearSelection ? 'pointer' : 'default'
+	        }
+	      }
+	    };
+	
+	    return styles;
+	  },
+	
 	  render: function render() {
 	    var _props = this.props;
 	    var selectedDate = _props.selectedDate;
@@ -46740,173 +46681,45 @@
 	    var month = DateTime.getShortMonth(this.props.selectedDate);
 	    var day = this.props.selectedDate.getDate();
 	    var year = this.props.selectedDate.getFullYear();
-	
-	    var isLandscape = this.props.mode === 'landscape';
-	    var dateYPosition = 0;
-	    var dayYPosition = 30;
-	    var yearYPosition = 95;
-	
-	    if (isLandscape) {
-	      dateYPosition = this.props.weekCount === 5 ? 14 : this.props.weekCount === 6 ? 34 : 8;
-	      yearYPosition = this.props.weekCount === 4 ? 114 : 150;
-	      if (this.props.weekCount > 4) dayYPosition = 50;
-	    }
-	
-	    var styles = {
-	      root: {
-	        textAlign: 'center',
-	        position: 'relative'
-	      },
-	
-	      dateContainer: {
-	        backgroundColor: this.getTheme().color,
-	        height: isLandscape ? this.props.weekCount * 40 + 36 : 150,
-	        padding: '16px 0',
-	        transition: Transitions.easeOut(),
-	        boxSizing: 'border-box'
-	      },
-	
-	      date: {
-	        position: 'relative',
-	        color: this.getTheme().textColor,
-	        transition: Transitions.easeOut(),
-	        transform: 'translate3d(0,' + dateYPosition + 'px,0)'
-	      },
-	
-	      dowContainer: {
-	        height: 32,
-	        backgroundColor: this.getTheme().selectColor,
-	        borderRadius: isLandscape ? '2px 0 0 0' : '2px 2px 0 0',
-	        paddingTop: 9,
-	        boxSizing: 'border-box'
-	      },
-	
-	      dow: {
-	        fontSize: 13,
-	        lineHeight: '13px',
-	        height: '100%',
-	        color: this.getTheme().selectTextColor
-	      },
-	
-	      day: {
-	        root: {
-	          position: 'absolute',
-	          lineHeight: isLandscape ? '76px' : '58px',
-	          fontSize: isLandscape ? 76 : 58,
-	          height: isLandscape ? 76 : 58,
-	          width: '100%',
-	          opacity: this.state.selectedYear ? 0.7 : 1.0,
-	          transition: Transitions.easeOut(),
-	          transform: 'translate3d(0,' + dayYPosition + 'px,0)'
-	        },
-	
-	        title: {
-	          width: 100,
-	          marginLeft: 'auto',
-	          marginRight: 'auto',
-	          cursor: !this.state.selectedYear ? 'default' : 'pointer'
-	        }
-	      },
-	
-	      month: {
-	        root: {
-	          position: 'absolute',
-	          top: isLandscape ? 0 : 1,
-	          fontSize: isLandscape ? 26 : 22,
-	          lineHeight: isLandscape ? '26px' : '22px',
-	          height: isLandscape ? 26 : 22,
-	          width: '100%',
-	          textTransform: 'uppercase',
-	          opacity: this.state.selectedYear ? 0.7 : 1.0
-	        },
-	
-	        title: {
-	          width: 100,
-	          marginLeft: 'auto',
-	          marginRight: 'auto',
-	          cursor: !this.state.selectedYear ? 'default' : 'pointer'
-	        }
-	      },
-	
-	      year: {
-	        root: {
-	          position: 'absolute',
-	          margin: 0,
-	          fontSize: isLandscape ? 26 : 22,
-	          lineHeight: isLandscape ? '26px' : '22px',
-	          height: isLandscape ? 26 : 22,
-	          width: '100%',
-	          textTransform: 'uppercase',
-	          opacity: this.state.selectedYear ? 1.0 : 0.7,
-	          transition: Transitions.easeOut(),
-	          transform: 'translate3d(0,' + yearYPosition + 'px,0)'
-	        },
-	
-	        title: {
-	          width: 100,
-	          marginLeft: 'auto',
-	          marginRight: 'auto',
-	          cursor: !this.props.yearSelectionAvailable || this.state.selectedYear ? 'default' : 'pointer'
-	        }
-	      }
-	    };
+	    var styles = this.getStyles();
 	
 	    return React.createElement(
 	      'div',
 	      _extends({}, other, { style: this.mergeAndPrefix(styles.root, this.props.style) }),
 	      React.createElement(
-	        'div',
-	        { style: styles.dowContainer },
+	        SlideInTransitionGroup,
+	        {
+	          style: styles.year.root,
+	          direction: this.state.transitionDirection },
 	        React.createElement(
-	          SlideInTransitionGroup,
-	          {
-	            style: styles.dow,
-	            direction: this.state.transitionDirection },
-	          React.createElement(
-	            'div',
-	            { key: dayOfWeek },
-	            dayOfWeek
-	          )
+	          'div',
+	          { key: year, style: styles.year.title, onTouchTap: this._handleYearClick },
+	          year
 	        )
 	      ),
 	      React.createElement(
-	        'div',
-	        { style: AutoPrefix.all(styles.dateContainer) },
+	        SlideInTransitionGroup,
+	        {
+	          style: styles.monthDay.root,
+	          direction: this.state.transitionDirection },
 	        React.createElement(
 	          'div',
-	          { style: AutoPrefix.all(styles.date) },
+	          {
+	            key: dayOfWeek + month + day,
+	            style: styles.monthDay.title,
+	            onTouchTap: this._handleMonthDayClick },
 	          React.createElement(
-	            SlideInTransitionGroup,
-	            {
-	              style: styles.month.root,
-	              direction: this.state.transitionDirection },
-	            React.createElement(
-	              'div',
-	              { key: month, style: styles.month.title, onTouchTap: this._handleMonthDayClick },
-	              month
-	            )
+	            'span',
+	            null,
+	            dayOfWeek,
+	            ','
 	          ),
 	          React.createElement(
-	            SlideInTransitionGroup,
-	            {
-	              style: styles.day.root,
-	              direction: this.state.transitionDirection },
-	            React.createElement(
-	              'div',
-	              { key: day, style: styles.day.title, onTouchTap: this._handleMonthDayClick },
-	              day
-	            )
-	          ),
-	          React.createElement(
-	            SlideInTransitionGroup,
-	            {
-	              style: styles.year.root,
-	              direction: this.state.transitionDirection },
-	            React.createElement(
-	              'div',
-	              { key: year, style: styles.year.title, onTouchTap: this._handleYearClick },
-	              year
-	            )
+	            'span',
+	            { style: styles.month },
+	            month,
+	            ' ',
+	            day
 	          )
 	        )
 	      )
@@ -46918,15 +46731,17 @@
 	      this.props.handleMonthDayClick();
 	    }
 	
-	    if (this.props.yearSelectionAvailable) this.setState({ selectedYear: false });
+	    this.setState({ selectedYear: false });
 	  },
 	
 	  _handleYearClick: function _handleYearClick() {
-	    if (this.props.handleYearClick && !this.state.selectedYear && this.props.yearSelectionAvailable) {
+	    if (this.props.handleYearClick && !this.props.disableYearSelection && !this.state.selectedYear) {
 	      this.props.handleYearClick();
 	    }
 	
-	    if (this.props.yearSelectionAvailable) this.setState({ selectedYear: true });
+	    if (!this.props.disableYearSelection) {
+	      this.setState({ selectedYear: true });
+	    }
 	  }
 	
 	});
@@ -46934,7 +46749,7 @@
 	module.exports = DateDisplay;
 
 /***/ },
-/* 393 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46949,8 +46764,8 @@
 	var KeyCode = __webpack_require__(335);
 	var Transitions = __webpack_require__(330);
 	var StylePropable = __webpack_require__(322);
-	var FlatButton = __webpack_require__(394);
-	var Overlay = __webpack_require__(396);
+	var FlatButton = __webpack_require__(392);
+	var Overlay = __webpack_require__(394);
 	var Paper = __webpack_require__(346);
 	
 	var ReactTransitionGroup = React.addons.TransitionGroup;
@@ -47322,7 +47137,7 @@
 	module.exports = Dialog;
 
 /***/ },
-/* 394 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47339,7 +47154,7 @@
 	var ImmutabilityHelper = __webpack_require__(323);
 	var Typography = __webpack_require__(327);
 	var EnhancedButton = __webpack_require__(332);
-	var FlatButtonLabel = __webpack_require__(395);
+	var FlatButtonLabel = __webpack_require__(393);
 	
 	function validateLabel(props, propName, componentName) {
 	  if (!props.children && !props.label) {
@@ -47502,7 +47317,7 @@
 	module.exports = FlatButton;
 
 /***/ },
-/* 395 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47557,7 +47372,7 @@
 	module.exports = FlatButtonLabel;
 
 /***/ },
-/* 396 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47677,7 +47492,7 @@
 	module.exports = Overlay;
 
 /***/ },
-/* 397 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -47691,7 +47506,7 @@
 	var StylePropable = __webpack_require__(322);
 	var Transitions = __webpack_require__(330);
 	var UniqueId = __webpack_require__(368);
-	var EnhancedTextarea = __webpack_require__(398);
+	var EnhancedTextarea = __webpack_require__(396);
 	
 	/**
 	 * Check if a value is valid to be displayed inside an input.
@@ -47730,7 +47545,8 @@
 	    rows: React.PropTypes.number,
 	    type: React.PropTypes.string,
 	    underlineStyle: React.PropTypes.object,
-	    underlineFocusStyle: React.PropTypes.object
+	    underlineFocusStyle: React.PropTypes.object,
+	    underlineDisabledStyle: React.PropTypes.object
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
@@ -47863,6 +47679,7 @@
 	
 	    styles.error = this.mergeAndPrefix(styles.error, props.errorStyle);
 	    styles.underline = this.mergeAndPrefix(styles.underline, props.underlineStyle);
+	    styles.underlineAfter = this.mergeAndPrefix(styles.underlineAfter, props.underlineDisabledStyle);
 	
 	    styles.floatingLabel = this.mergeStyles(styles.hint, {
 	      lineHeight: '22px',
@@ -48081,7 +47898,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 398 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48245,7 +48062,7 @@
 	module.exports = EnhancedTextarea;
 
 /***/ },
-/* 399 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48257,9 +48074,9 @@
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
 	var Transitions = __webpack_require__(330);
-	var ClickAwayable = __webpack_require__(400);
+	var ClickAwayable = __webpack_require__(398);
 	var FontIcon = __webpack_require__(342);
-	var Menu = __webpack_require__(401);
+	var Menu = __webpack_require__(399);
 	
 	var DropDownIcon = React.createClass({
 	  displayName: 'DropDownIcon',
@@ -48384,7 +48201,7 @@
 	module.exports = DropDownIcon;
 
 /***/ },
-/* 400 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48430,7 +48247,7 @@
 	};
 
 /***/ },
-/* 401 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48441,15 +48258,15 @@
 	
 	var React = __webpack_require__(177);
 	var CssEvent = __webpack_require__(377);
-	var KeyLine = __webpack_require__(402);
+	var KeyLine = __webpack_require__(400);
 	var KeyCode = __webpack_require__(335);
 	var StylePropable = __webpack_require__(322);
 	var Transitions = __webpack_require__(330);
-	var ClickAwayable = __webpack_require__(400);
+	var ClickAwayable = __webpack_require__(398);
 	var Paper = __webpack_require__(346);
-	var MenuItem = __webpack_require__(403);
-	var LinkMenuItem = __webpack_require__(405);
-	var SubheaderMenuItem = __webpack_require__(406);
+	var MenuItem = __webpack_require__(401);
+	var LinkMenuItem = __webpack_require__(403);
+	var SubheaderMenuItem = __webpack_require__(404);
 	
 	/***********************
 	* Nested Menu Component
@@ -49045,7 +48862,7 @@
 	module.exports = Menu;
 
 /***/ },
-/* 402 */
+/* 400 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49065,7 +48882,7 @@
 	};
 
 /***/ },
-/* 403 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49077,7 +48894,7 @@
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
 	var FontIcon = __webpack_require__(342);
-	var Toggle = __webpack_require__(404);
+	var Toggle = __webpack_require__(402);
 	
 	var Types = {
 	  LINK: 'LINK',
@@ -49273,7 +49090,7 @@
 	module.exports = MenuItem;
 
 /***/ },
-/* 404 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49444,7 +49261,7 @@
 	module.exports = Toggle;
 
 /***/ },
-/* 405 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49558,7 +49375,7 @@
 	module.exports = LinkMenuItem;
 
 /***/ },
-/* 406 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49635,7 +49452,7 @@
 	module.exports = SubheaderMenuItem;
 
 /***/ },
-/* 407 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -49644,9 +49461,9 @@
 	var StylePropable = __webpack_require__(322);
 	var Transitions = __webpack_require__(330);
 	var KeyCode = __webpack_require__(335);
-	var DropDownArrow = __webpack_require__(408);
+	var DropDownArrow = __webpack_require__(406);
 	var Paper = __webpack_require__(346);
-	var Menu = __webpack_require__(401);
+	var Menu = __webpack_require__(399);
 	var ClearFix = __webpack_require__(370);
 	
 	var DropDownMenu = React.createClass({
@@ -49965,7 +49782,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 408 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49992,7 +49809,7 @@
 	module.exports = NavigationArrowDropDown;
 
 /***/ },
-/* 409 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -50245,7 +50062,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 410 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50256,11 +50073,11 @@
 	
 	var React = __webpack_require__(1);
 	var ReactTransitionGroup = React.addons.TransitionGroup;
-	var ClickAwayable = __webpack_require__(400);
+	var ClickAwayable = __webpack_require__(398);
 	var StylePropable = __webpack_require__(322);
 	var Events = __webpack_require__(334);
 	var PropTypes = __webpack_require__(331);
-	var Menu = __webpack_require__(411);
+	var Menu = __webpack_require__(409);
 	
 	var IconMenu = React.createClass({
 	  displayName: 'IconMenu',
@@ -50449,7 +50266,7 @@
 	module.exports = IconMenu;
 
 /***/ },
-/* 411 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50460,13 +50277,13 @@
 	
 	var React = __webpack_require__(1);
 	var update = React.addons.update;
-	var Controllable = __webpack_require__(412);
+	var Controllable = __webpack_require__(410);
 	var StylePropable = __webpack_require__(322);
 	var AutoPrefix = __webpack_require__(325);
 	var Transitions = __webpack_require__(330);
 	var KeyCode = __webpack_require__(335);
 	var PropTypes = __webpack_require__(331);
-	var List = __webpack_require__(413);
+	var List = __webpack_require__(411);
 	var Paper = __webpack_require__(346);
 	
 	var Menu = React.createClass({
@@ -50911,7 +50728,7 @@
 	module.exports = Menu;
 
 /***/ },
-/* 412 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50945,7 +50762,7 @@
 	};
 
 /***/ },
-/* 413 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51034,10 +50851,13 @@
 	module.exports = List;
 
 /***/ },
-/* 414 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	var isBrowser = typeof window !== 'undefined';
+	var Modernizr = isBrowser ? __webpack_require__(326) : undefined;
 	
 	var React = __webpack_require__(177);
 	var KeyCode = __webpack_require__(335);
@@ -51045,9 +50865,9 @@
 	var AutoPrefix = __webpack_require__(325);
 	var Transitions = __webpack_require__(330);
 	var WindowListenable = __webpack_require__(369);
-	var Overlay = __webpack_require__(396);
+	var Overlay = __webpack_require__(394);
 	var Paper = __webpack_require__(346);
-	var Menu = __webpack_require__(401);
+	var Menu = __webpack_require__(399);
 	
 	var openNavEventHandler = null;
 	
@@ -51147,7 +50967,7 @@
 	        width: this.getTheme().width,
 	        position: 'fixed',
 	        zIndex: 10,
-	        left: 0,
+	        left: isBrowser && Modernizr.csstransforms3d ? 0 : x,
 	        top: 0,
 	        transform: 'translate3d(' + x + 'px, 0, 0)',
 	        transition: !this.state.swiping && Transitions.easeOut(),
@@ -51169,6 +50989,7 @@
 	        right: 0
 	      }
 	    };
+	
 	    styles.menuItemLink = this.mergeAndPrefix(styles.menuItem, {
 	      display: 'block',
 	      textDecoration: 'none',
@@ -51375,7 +51196,7 @@
 	module.exports = LeftNav;
 
 /***/ },
-/* 415 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51531,7 +51352,7 @@
 	module.exports = LinearProgress;
 
 /***/ },
-/* 416 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51579,7 +51400,7 @@
 	module.exports = ListDivider;
 
 /***/ },
-/* 417 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51597,9 +51418,9 @@
 	var Typography = __webpack_require__(327);
 	var EnhancedButton = __webpack_require__(332);
 	var IconButton = __webpack_require__(329);
-	var OpenIcon = __webpack_require__(418);
-	var CloseIcon = __webpack_require__(408);
-	var NestedList = __webpack_require__(419);
+	var OpenIcon = __webpack_require__(416);
+	var CloseIcon = __webpack_require__(406);
+	var NestedList = __webpack_require__(417);
 	
 	var ListItem = React.createClass({
 	  displayName: 'ListItem',
@@ -52041,7 +51862,7 @@
 	module.exports = ListItem;
 
 /***/ },
-/* 418 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52068,14 +51889,14 @@
 	module.exports = NavigationArrowDropUp;
 
 /***/ },
-/* 419 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(177);
 	var ImmutabilityHelper = __webpack_require__(323);
-	var List = __webpack_require__(413);
+	var List = __webpack_require__(411);
 	
 	var NestedList = React.createClass({
 	  displayName: 'NestedList',
@@ -52121,20 +51942,20 @@
 	module.exports = NestedList;
 
 /***/ },
-/* 420 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	module.exports = {
-	  ClickAwayable: __webpack_require__(400),
+	  ClickAwayable: __webpack_require__(398),
 	  WindowListenable: __webpack_require__(369),
 	  StylePropable: __webpack_require__(322),
-	  StyleResizable: __webpack_require__(421)
+	  StyleResizable: __webpack_require__(419)
 	};
 
 /***/ },
-/* 421 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52187,7 +52008,7 @@
 	};
 
 /***/ },
-/* 422 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52200,8 +52021,8 @@
 	var StylePropable = __webpack_require__(322);
 	var Transitions = __webpack_require__(330);
 	var EnhancedSwitch = __webpack_require__(367);
-	var RadioButtonOff = __webpack_require__(423);
-	var RadioButtonOn = __webpack_require__(424);
+	var RadioButtonOff = __webpack_require__(421);
+	var RadioButtonOn = __webpack_require__(422);
 	
 	var RadioButton = React.createClass({
 	  displayName: 'RadioButton',
@@ -52330,7 +52151,7 @@
 	module.exports = RadioButton;
 
 /***/ },
-/* 423 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52357,7 +52178,7 @@
 	module.exports = ToggleRadioButtonUnchecked;
 
 /***/ },
-/* 424 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52384,7 +52205,7 @@
 	module.exports = ToggleRadioButtonChecked;
 
 /***/ },
-/* 425 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -52394,7 +52215,7 @@
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	var React = __webpack_require__(177);
-	var RadioButton = __webpack_require__(422);
+	var RadioButton = __webpack_require__(420);
 	
 	var RadioButtonGroup = React.createClass({
 	  displayName: 'RadioButtonGroup',
@@ -52504,7 +52325,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 426 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52753,7 +52574,7 @@
 	module.exports = RaisedButton;
 
 /***/ },
-/* 427 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53047,7 +52868,7 @@
 	module.exports = RefreshIndicator;
 
 /***/ },
-/* 428 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53059,7 +52880,7 @@
 	};
 
 /***/ },
-/* 429 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53070,8 +52891,8 @@
 	
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
-	var TextField = __webpack_require__(397);
-	var DropDownMenu = __webpack_require__(407);
+	var TextField = __webpack_require__(395);
+	var DropDownMenu = __webpack_require__(405);
 	
 	var SelectField = React.createClass({
 	  displayName: 'SelectField',
@@ -53203,7 +53024,7 @@
 	module.exports = SelectField;
 
 /***/ },
-/* 430 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53214,7 +53035,7 @@
 	
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
-	var Draggable = __webpack_require__(431);
+	var Draggable = __webpack_require__(429);
 	var Transitions = __webpack_require__(330);
 	var FocusRipple = __webpack_require__(336);
 	
@@ -53660,7 +53481,7 @@
 	module.exports = Slider;
 
 /***/ },
-/* 431 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54335,7 +54156,7 @@
 
 
 /***/ },
-/* 432 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54348,8 +54169,8 @@
 	var CssEvent = __webpack_require__(377);
 	var StylePropable = __webpack_require__(322);
 	var Transitions = __webpack_require__(330);
-	var ClickAwayable = __webpack_require__(400);
-	var FlatButton = __webpack_require__(394);
+	var ClickAwayable = __webpack_require__(398);
+	var FlatButton = __webpack_require__(392);
 	
 	var Snackbar = React.createClass({
 	  displayName: 'Snackbar',
@@ -54530,7 +54351,7 @@
 	module.exports = Snackbar;
 
 /***/ },
-/* 433 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54613,7 +54434,7 @@
 	module.exports = Tab;
 
 /***/ },
-/* 434 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -54623,10 +54444,10 @@
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	var React = __webpack_require__(1);
-	var TabTemplate = __webpack_require__(435);
-	var InkBar = __webpack_require__(436);
+	var TabTemplate = __webpack_require__(433);
+	var InkBar = __webpack_require__(434);
 	var StylePropable = __webpack_require__(322);
-	var Controllable = __webpack_require__(412);
+	var Controllable = __webpack_require__(410);
 	
 	var Tabs = React.createClass({
 	  displayName: 'Tabs',
@@ -54799,7 +54620,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 435 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54834,7 +54655,7 @@
 	module.exports = TabTemplate;
 
 /***/ },
-/* 436 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54894,7 +54715,7 @@
 	module.exports = InkBar;
 
 /***/ },
-/* 437 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55144,7 +54965,7 @@
 	module.exports = Table;
 
 /***/ },
-/* 438 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55157,8 +54978,8 @@
 	
 	var React = __webpack_require__(177);
 	var Checkbox = __webpack_require__(366);
-	var TableRowColumn = __webpack_require__(439);
-	var ClickAwayable = __webpack_require__(400);
+	var TableRowColumn = __webpack_require__(437);
+	var ClickAwayable = __webpack_require__(398);
 	var StylePropable = __webpack_require__(322);
 	
 	var TableBody = React.createClass({
@@ -55506,7 +55327,7 @@
 	module.exports = TableBody;
 
 /***/ },
-/* 439 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55629,7 +55450,7 @@
 	module.exports = TableRowColumn;
 
 /***/ },
-/* 440 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55639,7 +55460,7 @@
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	var React = __webpack_require__(177);
-	var TableRowColumn = __webpack_require__(439);
+	var TableRowColumn = __webpack_require__(437);
 	var StylePropable = __webpack_require__(322);
 	
 	var TableFooter = React.createClass({
@@ -55737,7 +55558,7 @@
 	module.exports = TableFooter;
 
 /***/ },
-/* 441 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55747,7 +55568,7 @@
 	var React = __webpack_require__(177);
 	var Checkbox = __webpack_require__(366);
 	var StylePropable = __webpack_require__(322);
-	var TableHeaderColumn = __webpack_require__(442);
+	var TableHeaderColumn = __webpack_require__(440);
 	
 	var TableHeader = React.createClass({
 	  displayName: 'TableHeader',
@@ -55896,7 +55717,7 @@
 	module.exports = TableHeader;
 
 /***/ },
-/* 442 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56016,7 +55837,7 @@
 	module.exports = TableHeaderColumn;
 
 /***/ },
-/* 443 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56202,7 +56023,7 @@
 	module.exports = TableRow;
 
 /***/ },
-/* 444 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56274,15 +56095,15 @@
 	module.exports.theme = theme;
 
 /***/ },
-/* 445 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(446);
+	module.exports = __webpack_require__(444);
 
 /***/ },
-/* 446 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56294,8 +56115,8 @@
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
 	var WindowListenable = __webpack_require__(369);
-	var TimePickerDialog = __webpack_require__(447);
-	var TextField = __webpack_require__(397);
+	var TimePickerDialog = __webpack_require__(445);
+	var TextField = __webpack_require__(395);
 	
 	var emptyTime = new Date();
 	emptyTime.setHours(0);
@@ -56436,7 +56257,7 @@
 	module.exports = TimePicker;
 
 /***/ },
-/* 447 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56449,9 +56270,9 @@
 	var StylePropable = __webpack_require__(322);
 	var WindowListenable = __webpack_require__(369);
 	var KeyCode = __webpack_require__(335);
-	var Clock = __webpack_require__(448);
-	var Dialog = __webpack_require__(393);
-	var FlatButton = __webpack_require__(394);
+	var Clock = __webpack_require__(446);
+	var Dialog = __webpack_require__(391);
+	var FlatButton = __webpack_require__(392);
 	
 	var TimePickerDialog = React.createClass({
 	  displayName: 'TimePickerDialog',
@@ -56572,17 +56393,17 @@
 	module.exports = TimePickerDialog;
 
 /***/ },
-/* 448 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
-	var TimeDisplay = __webpack_require__(449);
-	var ClockButton = __webpack_require__(450);
-	var ClockHours = __webpack_require__(451);
-	var ClockMinutes = __webpack_require__(454);
+	var TimeDisplay = __webpack_require__(447);
+	var ClockButton = __webpack_require__(448);
+	var ClockHours = __webpack_require__(449);
+	var ClockMinutes = __webpack_require__(452);
 	
 	var Clock = React.createClass({
 	  displayName: 'Clock',
@@ -56761,7 +56582,7 @@
 	module.exports = Clock;
 
 /***/ },
-/* 449 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56917,7 +56738,7 @@
 	module.exports = TimeDisplay;
 
 /***/ },
-/* 450 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57029,15 +56850,15 @@
 	module.exports = ClockButton;
 
 /***/ },
-/* 451 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
-	var ClockNumber = __webpack_require__(452);
-	var ClockPointer = __webpack_require__(453);
+	var ClockNumber = __webpack_require__(450);
+	var ClockPointer = __webpack_require__(451);
 	
 	function rad2deg(rad) {
 	  return rad * 57.29577951308232;
@@ -57230,7 +57051,7 @@
 	module.exports = ClockHours;
 
 /***/ },
-/* 452 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57335,7 +57156,7 @@
 	module.exports = ClockNumber;
 
 /***/ },
-/* 453 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57452,15 +57273,15 @@
 	module.exports = ClockPointer;
 
 /***/ },
-/* 454 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(177);
 	var StylePropable = __webpack_require__(322);
-	var ClockNumber = __webpack_require__(452);
-	var ClockPointer = __webpack_require__(453);
+	var ClockNumber = __webpack_require__(450);
+	var ClockPointer = __webpack_require__(451);
 	
 	function rad2deg(rad) {
 	  return rad * 57.29577951308232;
@@ -57627,7 +57448,7 @@
 	module.exports = ClockMinutes;
 
 /***/ },
-/* 455 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57671,7 +57492,7 @@
 	module.exports = ToolbarSeparator;
 
 /***/ },
-/* 456 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57727,7 +57548,7 @@
 	module.exports = ToolbarTitle;
 
 /***/ },
-/* 457 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57740,343 +57561,24 @@
 	  Extend: __webpack_require__(352),
 	  ImmutabilityHelper: __webpack_require__(323),
 	  KeyCode: __webpack_require__(335),
-	  KeyLine: __webpack_require__(402),
+	  KeyLine: __webpack_require__(400),
 	  UniqueId: __webpack_require__(368),
 	  Styles: __webpack_require__(324)
 	};
 
 /***/ },
-/* 458 */
+/* 456 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function injectTapEventPlugin () {
-	  var React = __webpack_require__(177);
-	  React.initializeTouchEvents(true);
-	
 	  __webpack_require__(72).injection.injectEventPluginsByName({
-	    "ResponderEventPlugin": __webpack_require__(459),
-	    "TapEventPlugin":       __webpack_require__(460)
+	    "TapEventPlugin":       __webpack_require__(457)
 	  });
 	};
 
 
 /***/ },
-/* 459 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ResponderEventPlugin
-	 */
-	
-	"use strict";
-	
-	var EventConstants = __webpack_require__(8);
-	var EventPluginUtils = __webpack_require__(7);
-	var EventPropagators = __webpack_require__(96);
-	var SyntheticEvent = __webpack_require__(100);
-	
-	var accumulateInto = __webpack_require__(74);
-	var keyOf = __webpack_require__(42);
-	
-	var isStartish = EventPluginUtils.isStartish;
-	var isMoveish = EventPluginUtils.isMoveish;
-	var isEndish = EventPluginUtils.isEndish;
-	var executeDirectDispatch = EventPluginUtils.executeDirectDispatch;
-	var hasDispatches = EventPluginUtils.hasDispatches;
-	var executeDispatchesInOrderStopAtTrue =
-	  EventPluginUtils.executeDispatchesInOrderStopAtTrue;
-	
-	/**
-	 * ID of element that should respond to touch/move types of interactions, as
-	 * indicated explicitly by relevant callbacks.
-	 */
-	var responderID = null;
-	var isPressing = false;
-	
-	var eventTypes = {
-	  /**
-	   * On a `touchStart`/`mouseDown`, is it desired that this element become the
-	   * responder?
-	   */
-	  startShouldSetResponder: {
-	    phasedRegistrationNames: {
-	      bubbled: keyOf({onStartShouldSetResponder: null}),
-	      captured: keyOf({onStartShouldSetResponderCapture: null})
-	    }
-	  },
-	
-	  /**
-	   * On a `scroll`, is it desired that this element become the responder? This
-	   * is usually not needed, but should be used to retroactively infer that a
-	   * `touchStart` had occured during momentum scroll. During a momentum scroll,
-	   * a touch start will be immediately followed by a scroll event if the view is
-	   * currently scrolling.
-	   */
-	  scrollShouldSetResponder: {
-	    phasedRegistrationNames: {
-	      bubbled: keyOf({onScrollShouldSetResponder: null}),
-	      captured: keyOf({onScrollShouldSetResponderCapture: null})
-	    }
-	  },
-	
-	  /**
-	   * On a `touchMove`/`mouseMove`, is it desired that this element become the
-	   * responder?
-	   */
-	  moveShouldSetResponder: {
-	    phasedRegistrationNames: {
-	      bubbled: keyOf({onMoveShouldSetResponder: null}),
-	      captured: keyOf({onMoveShouldSetResponderCapture: null})
-	    }
-	  },
-	
-	  /**
-	   * Direct responder events dispatched directly to responder. Do not bubble.
-	   */
-	  responderMove: {registrationName: keyOf({onResponderMove: null})},
-	  responderRelease: {registrationName: keyOf({onResponderRelease: null})},
-	  responderTerminationRequest: {
-	    registrationName: keyOf({onResponderTerminationRequest: null})
-	  },
-	  responderGrant: {registrationName: keyOf({onResponderGrant: null})},
-	  responderReject: {registrationName: keyOf({onResponderReject: null})},
-	  responderTerminate: {registrationName: keyOf({onResponderTerminate: null})}
-	};
-	
-	/**
-	 * Performs negotiation between any existing/current responder, checks to see if
-	 * any new entity is interested in becoming responder, performs that handshake
-	 * and returns any events that must be emitted to notify the relevant parties.
-	 *
-	 * A note about event ordering in the `EventPluginHub`.
-	 *
-	 * Suppose plugins are injected in the following order:
-	 *
-	 * `[R, S, C]`
-	 *
-	 * To help illustrate the example, assume `S` is `SimpleEventPlugin` (for
-	 * `onClick` etc) and `R` is `ResponderEventPlugin`.
-	 *
-	 * "Deferred-Dispatched Events":
-	 *
-	 * - The current event plugin system will traverse the list of injected plugins,
-	 *   in order, and extract events by collecting the plugin's return value of
-	 *   `extractEvents()`.
-	 * - These events that are returned from `extractEvents` are "deferred
-	 *   dispatched events".
-	 * - When returned from `extractEvents`, deferred-dispatched events contain an
-	 *   "accumulation" of deferred dispatches.
-	 * - These deferred dispatches are accumulated/collected before they are
-	 *   returned, but processed at a later time by the `EventPluginHub` (hence the
-	 *   name deferred).
-	 *
-	 * In the process of returning their deferred-dispatched events, event plugins
-	 * themselves can dispatch events on-demand without returning them from
-	 * `extractEvents`. Plugins might want to do this, so that they can use event
-	 * dispatching as a tool that helps them decide which events should be extracted
-	 * in the first place.
-	 *
-	 * "On-Demand-Dispatched Events":
-	 *
-	 * - On-demand-dispatched events are not returned from `extractEvents`.
-	 * - On-demand-dispatched events are dispatched during the process of returning
-	 *   the deferred-dispatched events.
-	 * - They should not have side effects.
-	 * - They should be avoided, and/or eventually be replaced with another
-	 *   abstraction that allows event plugins to perform multiple "rounds" of event
-	 *   extraction.
-	 *
-	 * Therefore, the sequence of event dispatches becomes:
-	 *
-	 * - `R`s on-demand events (if any)   (dispatched by `R` on-demand)
-	 * - `S`s on-demand events (if any)   (dispatched by `S` on-demand)
-	 * - `C`s on-demand events (if any)   (dispatched by `C` on-demand)
-	 * - `R`s extracted events (if any)   (dispatched by `EventPluginHub`)
-	 * - `S`s extracted events (if any)   (dispatched by `EventPluginHub`)
-	 * - `C`s extracted events (if any)   (dispatched by `EventPluginHub`)
-	 *
-	 * In the case of `ResponderEventPlugin`: If the `startShouldSetResponder`
-	 * on-demand dispatch returns `true` (and some other details are satisfied) the
-	 * `onResponderGrant` deferred dispatched event is returned from
-	 * `extractEvents`. The sequence of dispatch executions in this case
-	 * will appear as follows:
-	 *
-	 * - `startShouldSetResponder` (`ResponderEventPlugin` dispatches on-demand)
-	 * - `touchStartCapture`       (`EventPluginHub` dispatches as usual)
-	 * - `touchStart`              (`EventPluginHub` dispatches as usual)
-	 * - `responderGrant/Reject`   (`EventPluginHub` dispatches as usual)
-	 *
-	 * @param {string} topLevelType Record from `EventConstants`.
-	 * @param {string} topLevelTargetID ID of deepest React rendered element.
-	 * @param {object} nativeEvent Native browser event.
-	 * @return {*} An accumulation of synthetic events.
-	 */
-	function setResponderAndExtractTransfer(
-	    topLevelType,
-	    topLevelTargetID,
-	    nativeEvent) {
-	  var shouldSetEventType =
-	    isStartish(topLevelType) ? eventTypes.startShouldSetResponder :
-	    isMoveish(topLevelType) ? eventTypes.moveShouldSetResponder :
-	    eventTypes.scrollShouldSetResponder;
-	
-	  var bubbleShouldSetFrom = responderID || topLevelTargetID;
-	  var shouldSetEvent = SyntheticEvent.getPooled(
-	    shouldSetEventType,
-	    bubbleShouldSetFrom,
-	    nativeEvent
-	  );
-	  EventPropagators.accumulateTwoPhaseDispatches(shouldSetEvent);
-	  var wantsResponderID = executeDispatchesInOrderStopAtTrue(shouldSetEvent);
-	  if (!shouldSetEvent.isPersistent()) {
-	    shouldSetEvent.constructor.release(shouldSetEvent);
-	  }
-	
-	  if (!wantsResponderID || wantsResponderID === responderID) {
-	    return null;
-	  }
-	  var extracted;
-	  var grantEvent = SyntheticEvent.getPooled(
-	    eventTypes.responderGrant,
-	    wantsResponderID,
-	    nativeEvent
-	  );
-	
-	  EventPropagators.accumulateDirectDispatches(grantEvent);
-	  if (responderID) {
-	    var terminationRequestEvent = SyntheticEvent.getPooled(
-	      eventTypes.responderTerminationRequest,
-	      responderID,
-	      nativeEvent
-	    );
-	    EventPropagators.accumulateDirectDispatches(terminationRequestEvent);
-	    var shouldSwitch = !hasDispatches(terminationRequestEvent) ||
-	      executeDirectDispatch(terminationRequestEvent);
-	    if (!terminationRequestEvent.isPersistent()) {
-	      terminationRequestEvent.constructor.release(terminationRequestEvent);
-	    }
-	
-	    if (shouldSwitch) {
-	      var terminateType = eventTypes.responderTerminate;
-	      var terminateEvent = SyntheticEvent.getPooled(
-	        terminateType,
-	        responderID,
-	        nativeEvent
-	      );
-	      EventPropagators.accumulateDirectDispatches(terminateEvent);
-	      extracted = accumulateInto(extracted, [grantEvent, terminateEvent]);
-	      responderID = wantsResponderID;
-	    } else {
-	      var rejectEvent = SyntheticEvent.getPooled(
-	        eventTypes.responderReject,
-	        wantsResponderID,
-	        nativeEvent
-	      );
-	      EventPropagators.accumulateDirectDispatches(rejectEvent);
-	      extracted = accumulateInto(extracted, rejectEvent);
-	    }
-	  } else {
-	    extracted = accumulateInto(extracted, grantEvent);
-	    responderID = wantsResponderID;
-	  }
-	  return extracted;
-	}
-	
-	/**
-	 * A transfer is a negotiation between a currently set responder and the next
-	 * element to claim responder status. Any start event could trigger a transfer
-	 * of responderID. Any move event could trigger a transfer, so long as there is
-	 * currently a responder set (in other words as long as the user is pressing
-	 * down).
-	 *
-	 * @param {string} topLevelType Record from `EventConstants`.
-	 * @return {boolean} True if a transfer of responder could possibly occur.
-	 */
-	function canTriggerTransfer(topLevelType) {
-	  return topLevelType === EventConstants.topLevelTypes.topScroll ||
-	         isStartish(topLevelType) ||
-	         (isPressing && isMoveish(topLevelType));
-	}
-	
-	/**
-	 * Event plugin for formalizing the negotiation between claiming locks on
-	 * receiving touches.
-	 */
-	var ResponderEventPlugin = {
-	
-	  getResponderID: function() {
-	    return responderID;
-	  },
-	
-	  eventTypes: eventTypes,
-	
-	  /**
-	   * @param {string} topLevelType Record from `EventConstants`.
-	   * @param {DOMEventTarget} topLevelTarget The listening component root node.
-	   * @param {string} topLevelTargetID ID of `topLevelTarget`.
-	   * @param {object} nativeEvent Native browser event.
-	   * @return {*} An accumulation of synthetic events.
-	   * @see {EventPluginHub.extractEvents}
-	   */
-	  extractEvents: function(
-	      topLevelType,
-	      topLevelTarget,
-	      topLevelTargetID,
-	      nativeEvent) {
-	    var extracted;
-	    // Must have missed an end event - reset the state here.
-	    if (responderID && isStartish(topLevelType)) {
-	      responderID = null;
-	    }
-	    if (isStartish(topLevelType)) {
-	      isPressing = true;
-	    } else if (isEndish(topLevelType)) {
-	      isPressing = false;
-	    }
-	    if (canTriggerTransfer(topLevelType)) {
-	      var transfer = setResponderAndExtractTransfer(
-	        topLevelType,
-	        topLevelTargetID,
-	        nativeEvent
-	      );
-	      if (transfer) {
-	        extracted = accumulateInto(extracted, transfer);
-	      }
-	    }
-	    // Now that we know the responder is set correctly, we can dispatch
-	    // responder type events (directly to the responder).
-	    var type = isMoveish(topLevelType) ? eventTypes.responderMove :
-	      isEndish(topLevelType) ? eventTypes.responderRelease :
-	      isStartish(topLevelType) ? eventTypes.responderStart : null;
-	    if (type) {
-	      var gesture = SyntheticEvent.getPooled(
-	        type,
-	        responderID || '',
-	        nativeEvent
-	      );
-	      EventPropagators.accumulateDirectDispatches(gesture);
-	      extracted = accumulateInto(extracted, gesture);
-	    }
-	    if (type === eventTypes.responderRelease) {
-	      responderID = null;
-	    }
-	    return extracted;
-	  }
-	
-	};
-	
-	module.exports = ResponderEventPlugin;
-
-
-/***/ },
-/* 460 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -58104,10 +57606,10 @@
 	var EventPluginUtils = __webpack_require__(7);
 	var EventPropagators = __webpack_require__(96);
 	var SyntheticUIEvent = __webpack_require__(109);
-	var TouchEventUtils = __webpack_require__(461);
+	var TouchEventUtils = __webpack_require__(458);
 	var ViewportMetrics = __webpack_require__(77);
 	
-	var keyOf = __webpack_require__(42);
+	var keyOf = __webpack_require__(459);
 	var topLevelTypes = EventConstants.topLevelTypes;
 	
 	var isStartish = EventPluginUtils.isStartish;
@@ -58156,19 +57658,18 @@
 	  );
 	}
 	
+	var touchEvents = [
+	  topLevelTypes.topTouchStart,
+	  topLevelTypes.topTouchCancel,
+	  topLevelTypes.topTouchEnd,
+	  topLevelTypes.topTouchMove,
+	];
+	
 	var dependencies = [
 	  topLevelTypes.topMouseDown,
 	  topLevelTypes.topMouseMove,
-	  topLevelTypes.topMouseUp
-	];
-	
-	if (EventPluginUtils.useTouchEvents) {
-	  dependencies.push(
-	    topLevelTypes.topTouchEnd,
-	    topLevelTypes.topTouchStart,
-	    topLevelTypes.topTouchMove
-	  );
-	}
+	  topLevelTypes.topMouseUp,
+	].concat(touchEvents);
 	
 	var eventTypes = {
 	  touchTap: {
@@ -58180,14 +57681,16 @@
 	  }
 	};
 	
-	var now = function() {
+	var now = (function() {
 	  if (Date.now) {
-	    return Date.now();
+	    return Date.now;
 	  } else {
 	    // IE8 support: http://stackoverflow.com/questions/9430357/please-explain-why-and-how-new-date-works-as-workaround-for-date-now-in
-	    return +new Date;
+	    return function () {
+	      return +new Date;
+	    }
 	  }
-	}
+	})();
 	
 	var TapEventPlugin = {
 	
@@ -58209,7 +57712,8 @@
 	      topLevelType,
 	      topLevelTarget,
 	      topLevelTargetID,
-	      nativeEvent) {
+	      nativeEvent,
+	      nativeEventTarget) {
 	
 	    if (isTouch(topLevelType)) {
 	      lastTouchEvent = now();
@@ -58228,7 +57732,8 @@
 	      event = SyntheticUIEvent.getPooled(
 	        eventTypes.touchTap,
 	        topLevelTargetID,
-	        nativeEvent
+	        nativeEvent,
+	        nativeEventTarget
 	      );
 	    }
 	    if (isStartish(topLevelType)) {
@@ -58248,7 +57753,7 @@
 
 
 /***/ },
-/* 461 */
+/* 458 */
 /***/ function(module, exports) {
 
 	/**
@@ -58294,6 +57799,46 @@
 	
 	module.exports = TouchEventUtils;
 
+
+/***/ },
+/* 459 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule keyOf
+	 */
+	
+	/**
+	 * Allows extraction of a minified key. Let's the build system minify keys
+	 * without losing the ability to dynamically use key strings as values
+	 * themselves. Pass in an object with a single key/val pair and it will return
+	 * you the string key of that single record. Suppose you want to grab the
+	 * value for a key 'className' inside of an object. Key/val minification may
+	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
+	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
+	 * reuse those resolutions.
+	 */
+	"use strict";
+	
+	var keyOf = function (oneKeyObj) {
+	  var key;
+	  for (key in oneKeyObj) {
+	    if (!oneKeyObj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    return key;
+	  }
+	  return null;
+	};
+	
+	module.exports = keyOf;
 
 /***/ }
 /******/ ]);
